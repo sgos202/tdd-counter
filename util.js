@@ -23,14 +23,7 @@ export const checkoutCalculator = (priceList, cart, specials) => {
   var index = newList.findIndex((p) =>
     filteredSpecials.length === 1 ? p.type === filteredSpecials[0].type : ""
   );
-  filteredSpecials.length === 1 ? newList.splice(index, 1) : "";
-  filteredSpecials.length > 1 ? console.log(filteredSpecials) : "";
-
-  newList.forEach((k, i) => {
-    filteredSpecials.forEach((j) => {
-      j.type === k.type ? newList.splice(i, 1) : "";
-    });
-  });
+  filteredSpecials.length !== 0 ? newList.splice(index, 1) : "";
 
   newList.map((f) => {
     let calc = f.amount * f.unitPrice;
@@ -43,17 +36,10 @@ export const checkoutCalculator = (priceList, cart, specials) => {
     });
   });
 
-  ///
-  specials.forEach((h) => {
-    filteredSpecials.forEach((j) => {
-      j.amount === h.type ? (total += h.special) : "";
-    });
-  });
-
-  //   console.log("index: ", index);
-  console.log("NNN: ", newList);
+  console.log("index: ", index);
+  console.log(newList);
   console.log(filteredSpecials);
-  //   console.log("total: ", total);
+  console.log("total: ", total);
 
   return total;
 };
